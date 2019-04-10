@@ -1,0 +1,4335 @@
+{
+	"info": {
+		"_postman_id": "50b4abb3-8c74-4166-b240-388d2546b0c0",
+		"name": "Shop.API",
+		"description": "API для проекта Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "a_prepairing ",
+			"item": [
+				{
+					"name": "http://api.shop.devel/user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f815ad46-00e9-4d24-bbad-4f9c9a187169",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "33c9c89b-9f07-46db-88a0-d06489ead89d",
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.globals.set(\"accessToken\", response.accessToken);",
+									"pm.globals.set(\"refreshToken\", response.refreshToken);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "shop_test_user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "shop_test_user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "DeviceId",
+								"value": "233"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://api.shop.devel/user",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "shop_test_user",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "shop_test_user",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "Получение списка областей региона",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0281de0a-0257-43e0-bead-d818494d5ece",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200)",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"fullName\", \"name\", \"id\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/address/areas?regionId=54",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"address",
+								"areas"
+							],
+							"query": [
+								{
+									"key": "regionId",
+									"value": "54"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Получение списка областей региона",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://api.shop.devel/address/areas?regionId=86",
+									"protocol": "http",
+									"host": [
+										"api",
+										"shop",
+										"devel"
+									],
+									"path": [
+										"address",
+										"areas"
+									],
+									"query": [
+										{
+											"key": "regionId",
+											"value": "86"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.15.5"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Nov 2018 03:56:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Application-Context",
+									"value": "application:80"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=3600, public"
+								},
+								{
+									"key": "Expires",
+									"value": "Tue, 20 Nov 2018 04:56:22 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c4ca4238a0b923820dcc509a6f75849b\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Получение списка городов указанного региона/области",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a879757a-afe8-4ece-a6d2-f9ff0afd730c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"id\",\"name\", \"alias\", \"shops\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/address/cities?areaId=&regionId=10",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"address",
+								"cities"
+							],
+							"query": [
+								{
+									"key": "areaId",
+									"value": ""
+								},
+								{
+									"key": "regionId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка городов указанного региона/области Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "55eec895-4830-42f4-8f32-b6d6cfa4ca41",
+								"exec": [
+									"pm.test(\"есть ответ\", function () {",
+									"    pm.expect(pm.response.text()).to.include( \"id\", \"name\", \"alias\",\"shops\");",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/address/cities?areaId=63&regionId=3",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"address",
+								"cities"
+							],
+							"query": [
+								{
+									"key": "areaId",
+									"value": "63"
+								},
+								{
+									"key": "regionId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка крупнейших городов РФ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8baeca95-dc02-475a-8fc4-0e6d6a5795a1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"name\", \"id\", \"alias\", \"shops\");",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/address/mainCities",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"address",
+								"mainCities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка регионов",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ca57726c-f38e-41d9-a3a2-373eb4bd6b32",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include( \"id\", \"name\", \"fullName\");",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "shop_test_user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "shop_test_user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/address/regions",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"address",
+								"regions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for address"
+		},
+		{
+			"name": "brand",
+			"item": [
+				{
+					"name": "Получение списка брендов каталога",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "74c66442-215a-48d6-8f05-d254c482fade",
+								"exec": [
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"id\", \"name\", \"url\");",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/brand/list",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"brand",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for brand"
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "evictCategoryCache",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://api.shop.devel/category/evict",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"category",
+								"evict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение дерева каталога",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/category/list?key={{key}}&limit={{limit}}&offset={{offset}}&page={{page}}&text={{text}}&zoneId={{zoneId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"category",
+								"list"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "text",
+									"value": "{{text}}"
+								},
+								{
+									"key": "zoneId",
+									"value": "{{zoneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for category"
+		},
+		{
+			"name": "delivery",
+			"item": [
+				{
+					"name": "Получение списка транспортных компаний",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/delivery/freighter",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"delivery",
+								"freighter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение прайс-листа доставок",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/delivery/pricelist?cityId={{cityId}}&orderId={{orderId}}&type={{type}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"delivery",
+								"pricelist"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "{{cityId}}"
+								},
+								{
+									"key": "orderId",
+									"value": "{{orderId}}"
+								},
+								{
+									"key": "type",
+									"value": "{{type}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for delivery"
+		},
+		{
+			"name": "filter",
+			"item": [
+				{
+					"name": "Получение списка групп фильтров заданной товарной группы",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/filter/list?categoryId={{categoryId}}&primaryOnly=1&zoneId=1",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"filter",
+								"list"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "{{categoryId}}"
+								},
+								{
+									"key": "primaryOnly",
+									"value": "1"
+								},
+								{
+									"key": "zoneId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for filter"
+		},
+		{
+			"name": "offer",
+			"item": [
+				{
+					"name": "Получение конкретного предложения каталога по псевдониму",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/alias?alias={{alias}}&zoneId={{zoneId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"alias"
+							],
+							"query": [
+								{
+									"key": "alias",
+									"value": "{{alias}}"
+								},
+								{
+									"key": "zoneId",
+									"value": "{{zoneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка обсуждений артикула",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/comment?id={{id}}&key={{key}}&limit={{limit}}&offset={{offset}}&page={{page}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление комментария к обсуждению артикула",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/comment?accountNonExpired={{accountNonExpired}}&accountNonLocked={{accountNonLocked}}&authorities[0].authority={{authorities[0].authority}}&credentialsNonExpired={{credentialsNonExpired}}&enabled={{enabled}}&password={{password}}&username={{username}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "accountNonExpired",
+									"value": "{{accountNonExpired}}"
+								},
+								{
+									"key": "accountNonLocked",
+									"value": "{{accountNonLocked}}"
+								},
+								{
+									"key": "authorities[0].authority",
+									"value": "{{authorities[0].authority}}"
+								},
+								{
+									"key": "credentialsNonExpired",
+									"value": "{{credentialsNonExpired}}"
+								},
+								{
+									"key": "enabled",
+									"value": "{{enabled}}"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение количества найденных товаров по заданным параметрам",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/count?actualOnly={{actualOnly}}&categoryId={{categoryId}}&cityId={{cityId}}&ids={{ids}}&key={{key}}&limit={{limit}}&maxPrice={{maxPrice}}&minPrice={{minPrice}}&offset={{offset}}&p={{p}}&page={{page}}&pmax={{pmax}}&pmin={{pmin}}&selloutOnly={{selloutOnly}}&sort[0].direction={{sort[0].direction}}&sort[0].type={{sort[0].type}}&storageIds={{storageIds}}&text={{text}}&zoneId={{zoneId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"count"
+							],
+							"query": [
+								{
+									"key": "actualOnly",
+									"value": "{{actualOnly}}"
+								},
+								{
+									"key": "categoryId",
+									"value": "{{categoryId}}"
+								},
+								{
+									"key": "cityId",
+									"value": "{{cityId}}"
+								},
+								{
+									"key": "ids",
+									"value": "{{ids}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "maxPrice",
+									"value": "{{maxPrice}}"
+								},
+								{
+									"key": "minPrice",
+									"value": "{{minPrice}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "p",
+									"value": "{{p}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "pmax",
+									"value": "{{pmax}}"
+								},
+								{
+									"key": "pmin",
+									"value": "{{pmin}}"
+								},
+								{
+									"key": "selloutOnly",
+									"value": "{{selloutOnly}}"
+								},
+								{
+									"key": "sort[0].direction",
+									"value": "{{sort[0].direction}}"
+								},
+								{
+									"key": "sort[0].type",
+									"value": "{{sort[0].type}}"
+								},
+								{
+									"key": "storageIds",
+									"value": "{{storageIds}}"
+								},
+								{
+									"key": "text",
+									"value": "{{text}}"
+								},
+								{
+									"key": "zoneId",
+									"value": "{{zoneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка предложений каталога по заданным параметрам",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/list?actualOnly={{actualOnly}}&categoryId={{categoryId}}&cityId={{cityId}}&ids={{ids}}&key={{key}}&limit={{limit}}&maxPrice={{maxPrice}}&minPrice={{minPrice}}&offset={{offset}}&p={{p}}&page={{page}}&pmax={{pmax}}&pmin={{pmin}}&selloutOnly={{selloutOnly}}&sort[0].direction={{sort[0].direction}}&sort[0].type={{sort[0].type}}&storageIds={{storageIds}}&text={{text}}&zoneId={{zoneId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"list"
+							],
+							"query": [
+								{
+									"key": "actualOnly",
+									"value": "{{actualOnly}}"
+								},
+								{
+									"key": "categoryId",
+									"value": "{{categoryId}}"
+								},
+								{
+									"key": "cityId",
+									"value": "{{cityId}}"
+								},
+								{
+									"key": "ids",
+									"value": "{{ids}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "maxPrice",
+									"value": "{{maxPrice}}"
+								},
+								{
+									"key": "minPrice",
+									"value": "{{minPrice}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "p",
+									"value": "{{p}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "pmax",
+									"value": "{{pmax}}"
+								},
+								{
+									"key": "pmin",
+									"value": "{{pmin}}"
+								},
+								{
+									"key": "selloutOnly",
+									"value": "{{selloutOnly}}"
+								},
+								{
+									"key": "sort[0].direction",
+									"value": "{{sort[0].direction}}"
+								},
+								{
+									"key": "sort[0].type",
+									"value": "{{sort[0].type}}"
+								},
+								{
+									"key": "storageIds",
+									"value": "{{storageIds}}"
+								},
+								{
+									"key": "text",
+									"value": "{{text}}"
+								},
+								{
+									"key": "zoneId",
+									"value": "{{zoneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка отзывов к артикулу",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/opinion?id={{id}}&key={{key}}&limit={{limit}}&offset={{offset}}&page={{page}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"opinion"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Заявка на подписку на рассылку ценового прайса",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/subscribe?email={{email}}&storageId={{storageId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"subscribe"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}"
+								},
+								{
+									"key": "storageId",
+									"value": "{{storageId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Подтверждение подписки на рассылку ценового прайса",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/subscribeConfirm?code={{code}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"subscribeConfirm"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "{{code}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отписка от рассылки ценового прайса",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/unsubscribe?code={{code}}&email={{email}}&storageId={{storageId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"unsubscribe"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "{{code}}"
+								},
+								{
+									"key": "email",
+									"value": "{{email}}"
+								},
+								{
+									"key": "storageId",
+									"value": "{{storageId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение конкретного предложения каталога по артикулу",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/offer/view?cityId={{cityId}}&id={{id}}&storageIds={{storageIds}}&zoneId={{zoneId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"offer",
+								"view"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "{{cityId}}"
+								},
+								{
+									"key": "id",
+									"value": "{{id}}"
+								},
+								{
+									"key": "storageIds",
+									"value": "{{storageIds}}"
+								},
+								{
+									"key": "zoneId",
+									"value": "{{zoneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for offer"
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "Добавление сборки заказа",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/assembly",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"assembly"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление сборки заказа",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/assembly",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"assembly"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Оплата заказа средствами с баланса клиента",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/bonusPay",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"bonusPay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отмена оформленного заказа",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Номер заказа"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/cancel",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение комментариев к заказу",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/comment?id={{id}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление комментария к заказу",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/comment",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение контактов заказа",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/contact",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Копия заказа",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/copy",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"copy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение кол-ва заказов с указанными параметрами",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/count?creationDateFrom={{creationDateFrom}}&creationDateTo={{creationDateTo}}&customerIds={{customerIds}}&key={{key}}&limit={{limit}}&mergeable={{mergeable}}&offset={{offset}}&page={{page}}&statuses={{statuses}}&storageIds={{storageIds}}&text={{text}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"count"
+							],
+							"query": [
+								{
+									"key": "creationDateFrom",
+									"value": "{{creationDateFrom}}"
+								},
+								{
+									"key": "creationDateTo",
+									"value": "{{creationDateTo}}"
+								},
+								{
+									"key": "customerIds",
+									"value": "{{customerIds}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "mergeable",
+									"value": "{{mergeable}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "statuses",
+									"value": "{{statuses}}"
+								},
+								{
+									"key": "storageIds",
+									"value": "{{storageIds}}"
+								},
+								{
+									"key": "text",
+									"value": "{{text}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение доставки к заказу",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/delivery",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"delivery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление доставки к заказу",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/delivery",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"delivery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление доставки к заказу",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/delivery",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"delivery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Разделение части заказа на две",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/divide",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"divide"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение документа к заказу",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/document?fn={{fn}}&format={{format}}&orderId={{orderId}}&part={{part}}&type={{type}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"document"
+							],
+							"query": [
+								{
+									"key": "fn",
+									"value": "{{fn}}"
+								},
+								{
+									"key": "format",
+									"value": "{{format}}"
+								},
+								{
+									"key": "orderId",
+									"value": "{{orderId}}"
+								},
+								{
+									"key": "part",
+									"value": "{{part}}"
+								},
+								{
+									"key": "type",
+									"value": "{{type}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение количества позиции в заказе",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/item",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление позиции в заказ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/item",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление позиции из заказа",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/item",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение заказов с указанными параметрами",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/list?creationDateFrom={{creationDateFrom}}&creationDateTo={{creationDateTo}}&customerIds={{customerIds}}&key={{key}}&limit={{limit}}&mergeable={{mergeable}}&offset={{offset}}&page={{page}}&statuses={{statuses}}&storageIds={{storageIds}}&text={{text}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"list"
+							],
+							"query": [
+								{
+									"key": "creationDateFrom",
+									"value": "{{creationDateFrom}}"
+								},
+								{
+									"key": "creationDateTo",
+									"value": "{{creationDateTo}}"
+								},
+								{
+									"key": "customerIds",
+									"value": "{{customerIds}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "mergeable",
+									"value": "{{mergeable}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								},
+								{
+									"key": "statuses",
+									"value": "{{statuses}}"
+								},
+								{
+									"key": "storageIds",
+									"value": "{{storageIds}}"
+								},
+								{
+									"key": "text",
+									"value": "{{text}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение заказов по указанным номерам",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/listByIds?ids={{ids}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"listByIds"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "{{ids}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Объединение частей заказа",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/merge",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"merge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Перемещение позиции в заказе в другую часть",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/move",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение метки к заказу",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/note",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"note"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Оформление заказа в один клик",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/oneClick",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"oneClick"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение заказа по номеру",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/order?id={{id}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"order"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение параметров заказа",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/order",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление заказа",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/order",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение точки выдачи части заказа",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/part",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"part"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление части заказа",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/part",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"part"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Применение промокода",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/promocode",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"promocode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отмена применения промокодов",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/promocode",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"promocode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Оформление существующего заказа",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/order/reserve",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"order",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for order"
+		},
+		{
+			"name": "promo",
+			"item": [
+				{
+					"name": "Получение конкретного промо-материала для LK.Android",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/promo/androidEvent?id={{id}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"promo",
+								"androidEvent"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка статей",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/promo/article?cityId=659&key={{key}}&limit={{limit}}&offset={{offset}}&page={{page}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"promo",
+								"article"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "659"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение конкретного промо-материала",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/promo/event?id={{id}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"promo",
+								"event"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка баннеров главной страницы",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/promo/main?cityId=659",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"promo",
+								"main"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "659"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка новостей",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/promo/news?cityId=659&key={{key}}&limit={{limit}}&offset={{offset}}&page={{page}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"promo",
+								"news"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "659"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for promo"
+		},
+		{
+			"name": "recipe",
+			"item": [
+				{
+					"name": "Получение рецептов каталога",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/recipe/list?categoryId={{categoryId}}&zoneId={{zoneId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"recipe",
+								"list"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "{{categoryId}}"
+								},
+								{
+									"key": "zoneId",
+									"value": "{{zoneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for recipe"
+		},
+		{
+			"name": "storage",
+			"item": [
+				{
+					"name": "Получение списка точек выдачи",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/storage/list",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"storage",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for storage"
+		},
+		{
+			"name": "suggest",
+			"item": [
+				{
+					"name": "Получение предположений поиска",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/suggest/list?categoryLimit={{categoryLimit}}&referenceLimit={{referenceLimit}}&text={{text}}&zoneId={{zoneId}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"suggest",
+								"list"
+							],
+							"query": [
+								{
+									"key": "categoryLimit",
+									"value": "{{categoryLimit}}"
+								},
+								{
+									"key": "referenceLimit",
+									"value": "{{referenceLimit}}"
+								},
+								{
+									"key": "text",
+									"value": "{{text}}"
+								},
+								{
+									"key": "zoneId",
+									"value": "{{zoneId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for suggest"
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Аутентификация учётной записи",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "DeviceId",
+								"value": "{{DeviceId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение учётной записи",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Создание новой учётной записи",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка наличия логина",
+					"request": {
+						"method": "HEAD",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user?login={{login}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "{{login}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение баланса пользователя",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/cashFlow?customerId={{customerId}}&dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"cashFlow"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "{{customerId}}"
+								},
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение контакта учётной записи",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/contact",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление контакта к учётной записи",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/contact",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление контакта учётной записи, оставляя последний контакт(телефон, email)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/contact",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка типов контактов",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/contactType",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"contactType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение клиента учётной записи",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/customer",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление нового клиента к учётной записи",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/customer",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление клиента учётной записи",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/customer",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение последнего активного клиента учётной записи",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/lastCustomer",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"lastCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Восстановление пароля учётной записи",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/user/restorePassword?token={{token}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"user",
+								"restorePassword"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for user"
+		},
+		{
+			"name": "warranty",
+			"item": [
+				{
+					"name": "Получение списка заказ-нарядов клиента",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/warranty/list",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"warranty",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение состояния заказ-наряда по номеру",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/warranty/warranty?number={{number}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"warranty",
+								"warranty"
+							],
+							"query": [
+								{
+									"key": "number",
+									"value": "{{number}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for warranty"
+		},
+		{
+			"name": "wish",
+			"item": [
+				{
+					"name": "Изменение желания учётной записи",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/wish",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"wish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление желания учётной записи",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/wish",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"wish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление желания учётной записи",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/wish",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"wish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение количества желаний",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/wish/count?isFulfilled={{isFulfilled}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"wish",
+								"count"
+							],
+							"query": [
+								{
+									"key": "isFulfilled",
+									"value": "{{isFulfilled}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка артикулов, присутствующих в желаниях учётной записи",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/wish/hasOffers?ids={{ids}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"wish",
+								"hasOffers"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "{{ids}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение списка желаний учётной записи",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/wish/list?cityId={{cityId}}&isFulfilled={{isFulfilled}}&key={{key}}&limit={{limit}}&offset={{offset}}&page={{page}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"wish",
+								"list"
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "{{cityId}}"
+								},
+								{
+									"key": "isFulfilled",
+									"value": "{{isFulfilled}}"
+								},
+								{
+									"key": "key",
+									"value": "{{key}}"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}"
+								},
+								{
+									"key": "offset",
+									"value": "{{offset}}"
+								},
+								{
+									"key": "page",
+									"value": "{{page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Очистка списка желаний учётной записи",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://api.shop.devel/wish/list",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"wish",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for wish"
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "Добавление товара в корзину клиента",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/item?accessToken={{accessToken}}&refreshToken={{refreshToken}}&part=1&quantity=1&referenceId=430889&storageId=55",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"item"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{accessToken}}"
+								},
+								{
+									"key": "refreshToken",
+									"value": "{{refreshToken}}"
+								},
+								{
+									"key": "part",
+									"value": "1"
+								},
+								{
+									"key": "quantity",
+									"value": "1"
+								},
+								{
+									"key": "referenceId",
+									"value": "430889"
+								},
+								{
+									"key": "storageId",
+									"value": "55"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение корзины клиента",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/list?storageId=16&accessToken={{accessToken}}&refreshToken={{refreshToken}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"list"
+							],
+							"query": [
+								{
+									"key": "storageId",
+									"value": "16"
+								},
+								{
+									"key": "accessToken",
+									"value": "{{accessToken}}"
+								},
+								{
+									"key": "refreshToken",
+									"value": "{{refreshToken}}"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Очистка корзины",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "beb7b33f-d0a8-43d5-9c1f-fec37b3b9afe",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b194e74-c622-4020-8b48-44fc2b13cf54",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    console.log(pm.response)",
+									"    pm.expect(pm.response).to.deep.equal(",
+									"        {",
+									"            \"parts\": [],",
+									"            \"diffs\": [],",
+									"            \"oldEta\": null,",
+									"            \"eta\": null,",
+									"            \"sum\": 0,",
+									"            \"oldSum\": 0",
+									"        }",
+									"    );",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DeviceId",
+								"value": "233",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://api.shop.devel/cart/all?accessToken={{accessToken}}&refreshToken={{refreshToken}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"all"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{accessToken}}"
+								},
+								{
+									"key": "refreshToken",
+									"value": "{{refreshToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Присоединение всей корзины К существующему заказу",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/append?accessToken={{accessToken}}&refreshToken={{refreshToken}}",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"append"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "{{accessToken}}"
+								},
+								{
+									"key": "refreshToken",
+									"value": "{{refreshToken}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Присоединение части корзины К существующему заказу",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/appendPart",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"appendPart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Разделение части коризны на две",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Часть корзины"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/divide",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"divide"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Изменение количества товара в корзине клиента",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/item",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление товара из корзины клиента",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/item",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Перезапись корзины",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/items",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Объединение двух частей корзины в одну",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/merge",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"merge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Перемещение товаров из одной части в другую",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/move",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление части корзины",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/part",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"part"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Оформление всей корзины в виде заказа",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/reserve",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Оформление части корзины в виде заказа",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/reservePart",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"reservePart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Сохранение всей корзины в виде заказа",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/save",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Сохранение части корзины в виде заказа",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "params"
+						},
+						"url": {
+							"raw": "http://api.shop.devel/cart/savePart",
+							"protocol": "http",
+							"host": [
+								"api",
+								"shop",
+								"devel"
+							],
+							"path": [
+								"cart",
+								"savePart"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for cart"
+		}
+	]
+}
